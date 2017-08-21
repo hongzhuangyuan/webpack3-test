@@ -1,6 +1,3 @@
-import path from "path"
-const compile = require("../src/webpack-compiler").context(path.join(__dirname, "data/")).compile
-
 describe("compiler", () => {
 
   it("entry is required", () => {
