@@ -21,5 +21,13 @@ describe("compiler", () => {
       done()
     })
   })
+
+  it("bundles dependencies", done =>{
+    compile({entry: './deps.js'}).catch(done.fail).then(result =>{
+      expect(result).toMatch(/jQuery/m)
+      done()
+    })
+  })
+
 })
 
