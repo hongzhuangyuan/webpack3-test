@@ -6,7 +6,7 @@ import path from "path"
 class Compiler{
   constructor(){
     this.compile = (options) => {
-      let output = {filename: '[name]', path: path.join(__dirname, 'dist')}
+      let output = {filename: "[name]", path: path.join(__dirname, "dist")}
       let compiler = webpack($.extend({context: this._context},  options, {output: output}))
 
       return new Promise((resolve, reject)=>{

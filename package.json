@@ -10,7 +10,10 @@
     "babel-jest": "^20.0.3",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.5",
+    "eslint": "^4.5.0",
     "file-loader": "^0.11.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
     "jquery": "^3.2.1",
     "memory-fs": "^0.4.1",
     "regenerator-runtime": "^0.11.0",
@@ -19,12 +22,10 @@
   },
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "test": "clear && jest --bail --color 2>&1 | less -r"
+    "test": "clear && gulp eslint && jest --bail --color 2>&1 | less -r"
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFiles": [
-      "<rootDir>/env-setup.js"
-    ]
+    "setupFiles": ["<rootDir>/env-setup.js"]
   }
 }

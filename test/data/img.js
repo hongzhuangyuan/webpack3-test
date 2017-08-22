@@ -1,1 +1,1 @@
-import 'file-loader!./assets/logo.png'
+import "file-loader!./assets/logo.png"

@@ -1,1 +1,1 @@
-import 'json-loader!./assets/users.json'
+import "json-loader!./assets/users.json"
