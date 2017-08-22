@@ -1,6 +1,6 @@
 /*global compile*/
 
-describe("assert", () => {
+describe("assets", () => {
 
   it("inline mode", done => {
 
