@@ -20,4 +20,15 @@ describe("output", () => {
 
   })
 
+  it("packaging multiple modules into single module", done => {
+
+    compile({ entry: ["./inline.js", "./deps.js"] }).catch(done.fail).then(files => {
+      expect(files).toEqual(["main"])
+      expect(files.main).toMatch(/jQuery/m)
+      expect(files.main).toMatch(/color:\s*red/m)
+      done()
+    })
+
+  })
+
 })
