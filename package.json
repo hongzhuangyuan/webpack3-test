@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "test": "jest"
+    "test": "clean && jest --bail"
   },
   "jest":{
     "setupFiles": ["<rootDir>/env-setup.js"]
