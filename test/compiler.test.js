@@ -1,7 +1,7 @@
 describe("compiler", () => {
 
   it("entry is required", () => {
-    var noOptions = {}
+    let noOptions = {}
     
     expect(()=> compile(noOptions)).toThrow(/misses the property 'entry'/)
   })
