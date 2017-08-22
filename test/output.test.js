@@ -22,7 +22,9 @@ describe("output", () => {
 
   it("packaging multiple modules into single module", done => {
 
-    compile({ entry: ["./inline.js", "./deps.js"] }).catch(done.fail).then(files => {
+    compile({
+      entry: ["./inline.js", "./deps.js"]
+    }).catch(done.fail).then(files => {
       expect(files).toEqual(["main"])
       expect(files.main).toMatch(/jQuery/m)
       expect(files.main).toMatch(/color:\s*red/m)
@@ -33,7 +35,12 @@ describe("output", () => {
 
   it("packaging multiple entries", done => {
 
-    compile({ entry: {inline:"./inline.js", deps:"./deps.js"} }).catch(done.fail).then(files => {
+    compile({
+      entry: {
+        inline: "./inline.js",
+        deps: "./deps.js"
+      }
+    }).catch(done.fail).then(files => {
       expect(files).toEqual(["inline", "deps"])
       done()
     })
