@@ -1,1 +1,3 @@
-module.exports = {__dirname: __dirname}
+module.exports = {
+  __dirname: __dirname
+}
