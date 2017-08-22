@@ -46,4 +46,19 @@ describe("assert", ()=> {
     })
 
   })
+
+  it("css will use the encoded image url", done =>{
+    let module = {
+      rules: [
+        {test: /\.png$/i, use: ["file-loader"]}
+      ]
+    }
+
+    compile({entry: './background.js', module: module}).catch(done.fail).then(files => {
+      expect(files).toHaveLength(2)
+      expect(files.main).toEqual(expect.stringContaining(files.find(it => it.endsWith(".png"))))
+      done()
+    })
+
+  })
 })
