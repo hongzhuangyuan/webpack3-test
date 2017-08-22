@@ -6,7 +6,9 @@ import path from "path"
 class Compiler {
   constructor() {
     this.compile = (options) => {
-      options = _.defaultsDeep({ context: this._context }, options, {
+      options = _.defaultsDeep({
+        context: this._context
+      }, options, {
         output: {
           filename: "[name]",
           path: path.join(__dirname, "dist")
