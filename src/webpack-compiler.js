@@ -7,15 +7,15 @@ class Compiler{
   constructor(){
     this.compile = (options) => {
       var fs = new MemoryFS()
-      var compiler = webpack($.extend({context: this._context},  options, {output: {filename: 'bundle.js'}}))
+      var output = {filename: '[name]', path: path.join(__dirname, 'dist')}
+      var compiler = webpack($.extend({context: this._context},  options, {output: output}))
       compiler.outputFileSystem = fs
 
       return new Promise((resolve, reject)=>{
         compiler.run((err, stats) => {
           try{
             if(err || stats.hasErrors()) throw err || stats.toJson().errors
-
-            resolve(fs.readFileSync(path.join(__dirname, "..", "./bundle.js"),"UTF-8")) 
+            resolve(list(fs, output.path)) 
           }catch(ex){
             reject(ex)
           }
@@ -29,6 +29,18 @@ class Compiler{
     return this
   }
 
+}
+
+function list(fs, dir){
+  let files = fs.readdirSync(dir) || []
+  files.forEach(file => {
+    Object.defineProperty(files, file, {
+      get(){
+        return fs.readFileSync(path.join(dir, file), "UTF-8")
+      }
+    })
+  })
+  return files
 }
 
 module.exports = new Compiler() 
