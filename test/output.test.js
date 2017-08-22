@@ -31,4 +31,13 @@ describe("output", () => {
 
   })
 
+  it("packaging multiple entries", done => {
+
+    compile({ entry: {inline:"./inline.js", deps:"./deps.js"} }).catch(done.fail).then(files => {
+      expect(files).toEqual(["inline", "deps"])
+      done()
+    })
+
+  })
+
 })
