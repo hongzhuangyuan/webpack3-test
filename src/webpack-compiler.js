@@ -1,20 +1,19 @@
 import webpack from "webpack"
 import MemoryFS from "memory-fs"
-import * as $ from "jquery"
+import _ from "lodash"
 import path from "path"
 
 class Compiler {
   constructor() {
     this.compile = (options) => {
-      let output = {
-        filename: "[name]",
-        path: path.join(__dirname, "dist")
-      }
-      let compiler = webpack($.extend({
-        context: this._context
-      }, options, {
-        output: output
-      }))
+      options = _.defaultsDeep({ context: this._context }, options, {
+        output: {
+          filename: "[name]",
+          path: path.join(__dirname, "dist")
+        }
+      })
+
+      let compiler = webpack(options)
 
       return new Promise((resolve, reject) => {
         let fs = new MemoryFS()
@@ -23,7 +22,7 @@ class Compiler {
           try {
             if (err || stats.hasErrors())
               throw err || stats.toJson().errors
-            resolve(list(fs, output.path))
+            resolve(list(fs, options.output.path))
           } catch (ex) {
             reject(ex)
           }
