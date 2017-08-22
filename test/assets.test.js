@@ -61,4 +61,16 @@ describe("assert", ()=> {
     })
 
   })
+
+  it("bundle json data", done =>{
+
+    compile({entry: './json.js'}).catch(done.fail).then(files => {
+      expect(files).toHaveLength(1)
+      expect(files.main).toEqual(expect.stringContaining("Kent"))
+      expect(files.main).toEqual(expect.stringContaining("Martin"))
+      done()
+    })
+
+  })
+
 })
