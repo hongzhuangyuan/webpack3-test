@@ -28,7 +28,7 @@
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "test": "clear && jest --bail --color 2>&1 | less -r",
-    "build": "npm test && gulp eslint"
+    "build": "clear && jest && gulp"
   },
   "jest": {
     "testEnvironment": "jsdom",

@@ -13,4 +13,4 @@ gulp.task("format", () => gulp.src(["gulpfile.js", "**/*.js", "!node_modules/**"
 
 /*eslint-enable*/
 
-gulp.task("default", ["eslint"])
+gulp.task("default", ["eslint", "format"])
