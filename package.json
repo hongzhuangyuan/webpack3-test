@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "test": "clear && jest --bail --color 2>&1 | less -r"
+    "test": "clear && jest --bail --onlyChanged --color 2>&1 | less -r"
   },
   "jest": {
     "testEnvironment": "jsdom",
