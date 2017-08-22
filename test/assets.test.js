@@ -36,4 +36,14 @@ describe("assert", ()=> {
       done()
     })
   })
+
+  it("encode image url & output the image to the dist directory", done =>{
+
+    compile({entry: './img.js'}).catch(done.fail).then(files => {
+      expect(files).toHaveLength(2)
+      expect(files.main).toEqual(expect.stringContaining(files.find(it => it.endsWith(".png"))))
+      done()
+    })
+
+  })
 })
