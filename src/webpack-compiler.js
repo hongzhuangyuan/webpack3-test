@@ -5,14 +5,9 @@ import path from "path"
 
 class Compiler {
   constructor() {
-    this.compile = (options) => {
-      options = _.defaultsDeep({
-        context: this._context
-      }, options, {
-        output: {
-          filename: "[name]",
-          path: path.join(__dirname, "dist")
-        }
+    this.compile = options => {
+      options = _.defaultsDeep({ context: this._context }, options, {
+        output: { filename: "[name]", path: path.join(__dirname, "dist") }
       })
 
       let compiler = webpack(options)
@@ -22,8 +17,7 @@ class Compiler {
         compiler.outputFileSystem = fs
         compiler.run((err, stats) => {
           try {
-            if (err || stats.hasErrors())
-              throw err || stats.toJson().errors
+            if (err || stats.hasErrors()) throw err || stats.toJson().errors
             resolve(list(fs, options.output.path))
           } catch (ex) {
             reject(ex)
@@ -37,7 +31,6 @@ class Compiler {
     this._context = _context
     return this
   }
-
 }
 
 function list(fs, dir) {
