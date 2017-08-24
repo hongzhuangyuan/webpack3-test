@@ -3,8 +3,8 @@ import HtmlWebpackPlugin from "html-webpack-plugin"
 describe("plugins", () => {
   it("webpack html plugin", done => {
     compile({
-      entry: { inline: "./inline.js", deps: "./deps.js" },
-      plugins: [new HtmlWebpackPlugin({ title: "Html Plugin" })]
+      entry: {inline: "./inline.js", deps: "./deps.js"},
+      plugins: [new HtmlWebpackPlugin({title: "Html Plugin"})]
     })
       .catch(done.fail)
       .then(files => {
