@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "test": "clear && jest --bail --color 2>&1 | less -r",
+    "test": "clear && NODE_ENV='production' jest --bail --color 2>&1 | less -r",
     "build": "clear && jest && gulp"
   },
   "jest": {
