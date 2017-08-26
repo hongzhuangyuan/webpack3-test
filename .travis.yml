@@ -1,6 +1,7 @@
 os: 
  - linux
  - osx
+dist: precise
 language: node_js
 node_js:
   - "7"
